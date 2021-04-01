@@ -1,0 +1,35 @@
+.nav {
+  &__list {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__item {
+    padding: 8px 24px;
+    margin-right: 38px;
+    text-transform: uppercase;
+    color: $c-white;
+
+    &--active {
+      background-color: rgba(100%, 100%, 100%, 0.1);
+      border-radius: 8px;
+    }
+  }
+
+  &__link {
+    color: $c-white;
+    transition: color 0.3s;
+
+    &:hover {
+      color: #9fadc2;
+    }
+  }
+}
+
+@media screen and (max-width: $medium-screen-breakpoint) {
+  .nav {
+    &__list {
+      display: none;
+    }
+  }
+}

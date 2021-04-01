@@ -1,0 +1,242 @@
+.header {
+  position: relative;
+  height: 700px;
+
+  background: no-repeat url("/images/header.png");
+  background-size: cover;
+  background-position: center;
+
+  &__nav {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 48px;
+    margin: auto;
+    letter-spacing: 2px;
+  }
+
+  &__logo {
+    position: absolute;
+    top: 24px;
+    left: calc(50% - 115px / 2);
+    z-index: 1;
+  }
+
+  &__phone-large-screen {
+    position: absolute;
+    top: 56px;
+    left: 120px;
+    letter-spacing: 2px;
+  }
+
+  &__phone-small-screen {
+    display: none;
+    position: absolute;
+    top: 39px;
+    left: 23px;
+    height: 18px;
+    width: 18px;
+  }
+
+  &__action {
+    position: absolute;
+    top: 56px;
+    right: 120px;
+    padding: 8px 0;
+    letter-spacing: 2px;
+
+    border-bottom: 1px solid #fff;
+  }
+
+  &__link {
+    color: $c-white;
+    text-transform: uppercase;
+  }
+
+  &__link-phone {
+    font-size: 12px;
+    font-weight: 700;
+    color: $c-white;
+  }
+
+  &__title {
+    position: absolute;
+    bottom: 165px;
+    left: 120px;
+    color: $c-white;
+    font-size: 60px;
+    width: max-content;
+
+    &::before {
+      position: absolute;
+      top: -16px;
+      width: 35px;
+      height: 2px;
+      content: " ";
+      background-color: $c-white;
+    }
+  }
+
+  &__nav-toggler {
+    opacity: 0;
+  }
+
+  &__nav-toggler-label {
+    display: none;
+    position: absolute;
+
+    align-items: center;
+
+    width: 18px;
+    height: 12px;
+    cursor: pointer;
+    z-index: 1;
+
+    & > .header__nav-toggler-icon,
+    & > .header__nav-toggler-icon::before,
+    & > .header__nav-toggler-icon::after {
+      position: absolute;
+      display: block;
+      width: 100%;
+      height: 2px;
+      background-color: #fff;
+      border-radius: 2px;
+    }
+
+    & > .header__nav-toggler-icon::before {
+      content: "";
+      top: -5px;
+    }
+
+    & > .header__nav-toggler-icon::after {
+      content: "";
+      top: 5px;
+    }
+
+    &__nav-toggler {
+      opacity: 0;
+
+      &:checked ~ &-label > &-icon {
+        transform: rotate(45deg);
+      }
+
+      &:checked ~ &-label > &-icon::before {
+        display: none;
+      }
+
+      &:checked ~ &-label > &-icon::after {
+        top: 0;
+        transform: rotate(90deg);
+      }
+    }
+  }
+
+  &__action-toggler {
+    display: none;
+  }
+}
+
+@media screen and (min-width: $large-screen-breakpoint) {
+  .header {
+    &__phone-large-screen {
+      left: 15%;
+    }
+
+    &__action {
+      right: 15%;
+    }
+
+    &__title {
+      left: 15%;
+    }
+  }
+}
+
+@media screen and (max-width: $medium-screen-breakpoint) {
+  .header {
+    height: 568px;
+
+    &__title {
+      bottom: 80px;
+      left: 20px;
+
+      font-size: 46px;
+    }
+
+    &__logo {
+      left: calc(50% - 73px / 2);
+    }
+
+    &__phone-small-screen {
+      display: block;
+    }
+
+    &__phone-large-screen {
+      display: none;
+    }
+
+    &__action {
+      display: none;
+    }
+
+    &__nav {
+      height: 100%;
+      bottom: 0;
+    }
+
+    &__nav-toggler-label {
+      position: absolute;
+      display: flex;
+      right: 23px;
+      top: 42px;
+    }
+
+    &__nav-toggler:checked ~ .nav {
+      background-color: blue;
+
+      &::before {
+        position: absolute;
+        font-size: 12px;
+        bottom: 92px;
+        left: 21px;
+        color: white;
+        content: "+1 234 555-55-55";
+      }
+
+      & > .header__action-toggler {
+        position: absolute;
+        bottom: 60px;
+        left: 21px;
+        width: max-content;
+        display: block;
+        right: 120px;
+        padding: 8px 0;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+
+        border-bottom: 1px solid #fff;
+
+        & > .header__link-toggler {
+          color: white;
+        }
+      }
+
+      & > .nav__list {
+        display: block;
+        width: 100%;
+        height: 100%;
+        margin-top: 120px;
+
+        font-size: 22px;
+
+        & > .nav__item {
+          margin-bottom: 16px;
+
+          &--active {
+            background-color: blue;
+          }
+        }
+      }
+    }
+  }
+}
